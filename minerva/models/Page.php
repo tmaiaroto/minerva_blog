@@ -114,11 +114,17 @@ class Page extends \minerva\models\Page {
              * this kind of flexibility. In this case, if it's not an admin action then we're adding to the
              * conditions the requirement of the document being published.
              *
-             * What else could we do? We could say certain users could see it on non-admin actions too...
+             * Note that this filter is applied to the core Minerva Page model.
+             * So as long as this model gets called, it will apply the published condition to all finds
+             * for all pages. Keep in mind the order in which filters are applied and when libraries are added.
+             * It's probably best to apply this sort of filter as self::applyFilter() instead so that we are
+             * more certain of when it's used. The filter can also be defined below outside of the class.
+             *
+             * What else could we do here? We could say certain users could see it on non-admin actions too...
              * Or...whatever else that could be dreamed of.
             */
-            if((isset($params['options']['request_params']['admin'])) && ($params['options']['request_params']['admin'] !== true)) {
-                $params['options']['conditions']['published'] = true;
+            if(!isset($params['options']['request_params']['admin']) || empty($params['options']['request_params']['admin'])) {
+				$params['options']['conditions']['published'] = true;
             }
 		    
 		    return $chain->next($self, $params, $chain);
