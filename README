@@ -1,0 +1,8 @@
+This is a plugin for the Minerva CMS.
+See: https://github.com/tmaiaroto/minerva
+
+To use this plugin, make sure that you have the minerva plugin and enable it like any other plugin...
+
+Libraries::add('minerva_blog');
+
+Make sure to add this library after adding minerva.
