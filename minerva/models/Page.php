@@ -11,7 +11,7 @@
 // depend on those classes, so again less portability. also not great for organization.
 // really hurts the ability to package as a phar file
 
-namespace blog\minerva\models;
+namespace minerva_blog\minerva\models;
 
 class Page extends \minerva\models\Page {
 	
