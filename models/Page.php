@@ -70,7 +70,7 @@ class Page extends \minerva\models\Page {
 		)
 	);
 	
-	// A little context
+	// A little context. This will show up in the admin pages index on the right to create a new "Blog Entry."
 	public $display_name = 'Blog Entry';
 	
 	public static function __init() {

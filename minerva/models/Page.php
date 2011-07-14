@@ -26,7 +26,10 @@ class Page extends \minerva\models\Page {
             'document' => array(),
         ),
         'index' => array(
-            'action' => array('rule' => 'allowAll')
+            'action' => array('rule' => 'allowAll'),
+             'admin_action' => array(
+                array('rule' => 'allowManagers', 'redirect' => array('admin' => 'admin', 'library' => 'minerva', 'controller' => 'users', 'action' => 'login'))
+            )
         )
 	);
 	

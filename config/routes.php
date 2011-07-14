@@ -18,4 +18,7 @@ Router::connect('/blog/index', array('library' => 'minerva', 'plugin' => 'minerv
 // Templates from: /libraries/minerva_blog/views/pages/static/template-name.html.php
 Router::connect('/blog', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'view', 'home'));
 Router::connect('/blog/view/{:args}', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'view', 'home'));
+
+// NOTE: /blog route could also be reached via the default Minerva route: /minerva/plugin/minerva_blog
+// Also: /minerva/plugin/minerva_blog/pages/read/document == /blog/read/{:url}
 ?>
