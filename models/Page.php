@@ -11,33 +11,20 @@
 // depend on those classes, so again less portability. also not great for organization.
 // really hurts the ability to package as a phar file
 
-namespace minerva\libraries\blog\models;
+namespace minerva\libraries\minerva_blog\models;
 
 class Page extends \minerva\models\Page {
 	
 	// This $access property will take priority oer the core PagesController's. Rather than needing to redefine each method's rules. So "view" for example can be left out and the default access rules will apply.
 	// Blogs different in that we want to allow access to index. However we also apply a filter below that will limit the documents displayed in the index action to just those that are published.
-	static $access = array(
-        'action' => array(
-            // Don't need to redfine all these...We only need index changed
-            /*'create' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),
-            'update' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),
-            'delete' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),*/
-            'index' => array(
-            array('rule' => 'allowAll')
-            ),
-            'foo' => array(
-            'bar'
-            )
+	public $access = array(
+        'read' => array(
+            'action' => array(),
+            //'admin_action' => array(),
+            'document' => array(),
         ),
-        'document' => array(
-            
+        'index' => array(
+            'action' => array('rule' => 'allowAll')
         )
 	);
 	

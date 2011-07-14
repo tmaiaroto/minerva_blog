@@ -9,12 +9,12 @@
 use \lithium\net\http\Router;
 
 // Route for reading a blog post (note the "document_type" parameter)
-Router::connect('/blog/read/{:url}', array('library' => 'minerva', 'controller' => 'pages', 'action' => 'read', 'layout' => 'blog.default', 'template' => 'blog.read'));
+Router::connect('/blog/read/{:url}', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'read'));
 // note: 'controller' => 'minerva.pages'  also works if your wanted to write the router shorter wihout the library key. which always must be minerva unless another controller is being used.
 
 // Yes, you can render "static" pages from the library as well by using the "view" action,
 // just ensure "page_type" is set. Templates from: /libraries/blog/views/pages/static/template-name.html.php
-Router::connect('/blog/view/{:url}', array('controller' => 'minerva.pages', 'action' => 'view', 'page_type' => 'blog'));
+//Router::connect('/blog/view/{:url}', array('minerva' => true, 'library' => 'minerva_blog', 'controller' => 'pages', 'action' => 'view', 'page_type' => 'blog'));
 
 
 // would use update from blog library (using core templates if not present)
@@ -26,6 +26,6 @@ Router::connect('/blog/view/{:url}', array('controller' => 'minerva.pages', 'act
 // Router::connect('/blog/create', array('admin' => true, 'controller' => 'minerva.pages', 'action' => 'create', 'page_type' => 'blog'));
 
 // Route for listing all blog entries
-Router::connect('/blog', array('controller' => 'minerva.pages', 'action' => 'index', 'page_type' => 'blog'));
+Router::connect('/blog', array('library' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index', 'page_type' => 'blog'));
 
 ?>

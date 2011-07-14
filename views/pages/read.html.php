@@ -3,8 +3,8 @@
 	<div class="box">
 		<h2>Menu</h2>
 		<div class="block">
-			<?php echo $this->minervaMenu->render(array('library' => 'blog', 'template' => 'blog_menu')); ?>
-			<p>This menu is being rendered from app/libraries/blog/views/menus/static</p>
+			<?php echo $this->minervaMenu->render_menu('blog_menu', 'minerva_blog'); ?>
+			<p>This menu is being rendered from app/libraries/minerva_blog/views/menus/static</p>
 		</div>
 	</div>
 </div>
@@ -15,7 +15,7 @@
 <!-- start main content area -->
     
 <br />
-<p>The template being rendered is from /libraries/blog/views/pages/read.html.php
+<p>This template being rendered is from /libraries/minerva_blog/views/pages/read.html.php
 <br />
 <h1><?=$document->title; ?></h1>
 <p>

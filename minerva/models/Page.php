@@ -15,29 +15,18 @@ namespace minerva_blog\minerva\models;
 
 class Page extends \minerva\models\Page {
 	
-	// This $access property will take priority oer the core PagesController's. Rather than needing to redefine each method's rules. So "view" for example can be left out and the default access rules will apply.
-	// Blogs different in that we want to allow access to index. However we also apply a filter below that will limit the documents displayed in the index action to just those that are published.
-	static $access = array(
-        'action' => array(
-            // Don't need to redfine all these...We only need index changed
-            /*'create' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),
-            'update' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),
-            'delete' => array(
-            array('rule' => 'allowManagers', 'redirect' => '/users/login')
-            ),*/
-            'index' => array(
-            array('rule' => 'allowAll')
-            ),
-            'foo' => array(
-            'bar'
-            )
+	// This model's access rules will takey priority over the others, but it's appended to the previous models,
+    // so if we didn't specify a rule for 'read' it would be use the default.
+    // NOTE: This is NOT recursive. It's only for the top level items (actions) 
+    // So if an action key is set here in the access rules, be sure the rules under it are EXACTLY as desired.
+    public $access = array(
+        'read' => array(
+            'action' => array(),
+            'admin_action' => array(),
+            'document' => array(),
         ),
-        'document' => array(
-            
+        'index' => array(
+            'action' => array('rule' => 'allowAll')
         )
 	);
 	
