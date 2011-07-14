@@ -26,6 +26,6 @@ Router::connect('/blog/read/{:url}', array('library' => 'minerva', 'plugin' => '
 // Router::connect('/blog/create', array('admin' => true, 'controller' => 'minerva.pages', 'action' => 'create', 'page_type' => 'blog'));
 
 // Route for listing all blog entries
-Router::connect('/blog', array('library' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index', 'page_type' => 'blog'));
+Router::connect('/blog', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index'));
 
 ?>
