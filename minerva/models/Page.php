@@ -1,16 +1,29 @@
 <?php
-// TODO: rethink "page types" maybe instead of having all these libraries, have one "page_type" library
-// then each model in that library will extend the Page model...
-// and the view templates will be under the library /views/page_type_name for each page type...
-// models still get instantiated on bootstrap...maybe route takes a key now instead of "library"
-// make it "page_type" since library could cause problems anyway. also change on the collection
-// the field "library" to "page_type" ...
-// Downside: this does mean page types are slightly less portable. you have to move model class and view folders
-// this also means if for some reaosn page types rely on other classes, where do they go?
-// could go under the "page_type" library....could go in their own library...but the page type may
-// depend on those classes, so again less portability. also not great for organization.
-// really hurts the ability to package as a phar file
-
+/**
+ * Minerva Blog Plugin
+ * Page Model
+ * 
+ * This page model extends Minerva's Page model.
+ * In fact, it's specific type of model called a Minerva Model.
+ * That's why it's also located under the minerva/models directory.
+ * 
+ * This model must extend \minerva\models\Page in order to hook
+ * into the CMS and utilize it's methods.
+ * 
+ * This model can adjust properties of the core Minerva Page model.
+ * For example, it can change access rules, schema, validation, and more.
+ * 
+ * A controller is not required. However, you could create a PagesController
+ * within this plugin, so long as you create the appropriate routes to actually
+ * use that controller. Don't forget that you can apply filters from this model 
+ * as well that can give you a lot of control over other methods. This is yet
+ * another way of hooking into the core CMS without modifying its files.
+ * Leaving your copy of the CMS pristine and clean for upgrades.
+ * 
+ * In addition to this file, templates under this plugin's views directory are
+ * required in order to complete the picture.
+ * 
+*/
 namespace minerva_blog\minerva\models;
 
 class Page extends \minerva\models\Page {
