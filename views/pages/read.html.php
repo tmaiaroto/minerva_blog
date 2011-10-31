@@ -19,8 +19,8 @@
 <br />
 <h1><?=$document->title; ?></h1>
 <p>
-Created: <?=$document->created; ?> (modified: <?=$document->modified; ?>)<br /><br />
-<?=$document->body; ?>
+Created: <?=date('Y-m-d', $document->created->sec); ?> (modified: <?=date('Y-m-d', $document->modified->sec); ?>)<br /><br />
+<?php echo $document->body; ?>
 </p>
 <?=$document->image; ?>
 
