@@ -132,7 +132,36 @@ class CommentsController extends \lithium\action\Controller {
 		if($this->request->is('json')) {
 			return $comments->data();
 		} else {
-			$this->redirect('/blog');
+			return false;
+		}
+	}
+	
+	/**
+	 * Returns the total number of comments, 
+	 * both active and awaiting moderation.
+	 *
+	 * @param type $page_id The page id
+	 * @return string JSON response with counts
+	*/
+	public function count($page_id=null) {
+		$response = array('total' => 0);
+		
+		if(empty($page_id)) {
+			return $response;
+		}
+		
+		$comments = Comment::find('first', array('conditions' => array('_page_id' => $page_id)));
+		$response['total'] = count($comments->comments);
+		
+		// TODO: loop through comments and count those that are approved and awaiting moderation
+		// i guess a map/reduce could also be used, if you want to be fancy
+		// $response['approved']  and  $response['pending']
+		
+		// Only allow this action to be viewed as JSON
+		if($this->request->is('json')) {
+			return $response;
+		} else {
+			return false;
 		}
 	}
 	
