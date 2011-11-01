@@ -21,4 +21,7 @@ Router::connect('/blog/view/{:args}', array('library' => 'minerva', 'plugin' => 
 
 // NOTE: /blog route could also be reached via the default Minerva route: /minerva/plugin/minerva_blog
 // Also: /minerva/plugin/minerva_blog/pages/read/document == /blog/read/{:url}
+
+Router::connect('/comments/{:action}.json', array('library' => 'minerva_blog', 'controller' => 'comments', 'type' => 'json'));
+Router::connect('/comments/{:action}/{:args}.json', array('library' => 'minerva_blog', 'controller' => 'comments', 'type' => 'json'));
 ?>
