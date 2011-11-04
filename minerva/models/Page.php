@@ -131,6 +131,8 @@ class Page extends \minerva\models\Page {
             if(!isset($params['options']['request_params']['admin']) || empty($params['options']['request_params']['admin'])) {
 				$params['options']['conditions']['published'] = true;
             }
+			
+			$params['order'] = array('created' => 'desc');
 		    
 		    return $chain->next($self, $params, $chain);
 		    

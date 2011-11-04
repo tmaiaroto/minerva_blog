@@ -13,6 +13,9 @@ Router::connect('/blog/read/{:url}', array('library' => 'minerva', 'plugin' => '
 
 // Route for listing all blog entries
 Router::connect('/blog/index', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index'));
+// Pagination for blog entries (default limit is 10)
+Router::connect('/blog/index/page:{:page:[0-9]+}', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index'));
+Router::connect('/blog/index/page:{:page:[0-9]+}/limit:{:limit:[0-9]+}', array('library' => 'minerva', 'plugin' => 'minerva_blog', 'controller' => 'pages', 'action' => 'index'));
 
 // Yes, you can render "static" pages from the library as well by using the "view" action,
 // Templates from: /libraries/minerva_blog/views/pages/static/template-name.html.php

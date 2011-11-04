@@ -151,7 +151,7 @@ class CommentsController extends \lithium\action\Controller {
 		}
 		
 		$comments = Comment::find('first', array('conditions' => array('_page_id' => $page_id)));
-		$response['total'] = count($comments->comments);
+		$response['total'] = isset($comments->comments) ? count($comments->comments):0;
 		
 		// TODO: loop through comments and count those that are approved and awaiting moderation
 		// i guess a map/reduce could also be used, if you want to be fancy
