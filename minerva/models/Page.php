@@ -131,9 +131,7 @@ class Page extends \minerva\models\Page {
             if(!isset($params['options']['request_params']['admin']) || empty($params['options']['request_params']['admin'])) {
 				$params['options']['conditions']['published'] = true;
             }
-			
-			$params['order'] = array('created' => 'desc');
-		    
+					    
 		    return $chain->next($self, $params, $chain);
 		    
 		    // NOTE: could be applying access rules here and checking against them
@@ -164,4 +162,9 @@ class Page extends \minerva\models\Page {
  * If the filter was applied within __init() it would run more than once.
  *
 */
+Page::applyFilter('find', function($self, $params, $chain) {
+	$params['order'] = array('created' => 'desc');
+		    
+	return $chain->next($self, $params, $chain);
+});
 ?>
