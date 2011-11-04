@@ -163,8 +163,7 @@ class Page extends \minerva\models\Page {
  *
 */
 Page::applyFilter('find', function($self, $params, $chain) {
-	$params['order'] = array('created' => 'desc');
-		    
+	$params['options']['order'] = array('created' => 'desc');
 	return $chain->next($self, $params, $chain);
 });
 ?>
