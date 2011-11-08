@@ -69,6 +69,15 @@ class Page extends \minerva\models\Page {
 				'type' => 'textarea',
 				'class' => 'tinymce'
 			)
+		),
+		'tags' => array(
+			'type' => 'array',
+			'form' => array(
+				'position' => 'options',
+				'label' => 'Tags',
+				'type' => 'text',
+				'class' => 'tagger'
+			)
 		)
 	);
 	
