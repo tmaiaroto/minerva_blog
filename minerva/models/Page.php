@@ -66,7 +66,8 @@ class Page extends \minerva\models\Page {
 			'type' => 'string',
 			'form' => array(
 				'label' => 'Body Copy',
-				'type' => 'textarea'
+				'type' => 'textarea',
+				'class' => 'tinymce'
 			)
 		)
 	);
